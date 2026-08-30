@@ -16,6 +16,7 @@ The public community template currently points at a stale GHCR `latest` image an
 - Connects headless Chrome on its upstream port, `9222`.
 - Uses Railway variable references for PostgreSQL and Bucket credentials.
 - Leaves MCP client allowlisting explicit instead of weakening OAuth registration.
+- Ships a Probo-native ISO/IEC 27001 starter kit and seeds an editable copy onto the persistent Probo volume.
 
 ## Deploying
 
@@ -30,6 +31,12 @@ After deployment:
 
 See [TEMPLATE.md](TEMPLATE.md) for the complete Railway composer configuration.
 
+## ISO/IEC 27001 starter kit
+
+The deployment includes the complete [Probo ISO/IEC 27001 starter kit](starter-kits/probo-iso27001/README.md). On first start, the wrapper copies it to `/data/starter-kits/probo-iso27001` and never overwrites that editable copy on later restarts or upgrades.
+
+Start with the organization discovery questionnaire, review every placeholder against verified facts, then follow the [Probo MCP import map](starter-kits/probo-iso27001/11-probo-mcp-import-map.md). The template does not auto-import records: the map requires a read-only inventory, a proposed manifest, and explicit approval before tenant writes. Draft templates are not evidence of control operation or conformity.
+
 ## Updating Probo
 
 Probo only supports the latest release for security fixes. Update the pinned tag and digest in the Dockerfile, review the upstream `probod` changelog, run the tests, then deploy to a staging copy before updating the Railway template.
@@ -43,8 +50,8 @@ Do not replace the version with the old GHCR `latest` tag. Railway does not auto
 docker build .
 ```
 
-The test verifies that the key is valid, private (`0600`), persistent across restarts, and overridden by an operator-supplied key.
+The test verifies that the starter kit is seeded once without overwriting operator edits, and that the OAuth key is valid, private (`0600`), persistent across restarts, and overridden by an operator-supplied key.
 
-## License
+## Licenses
 
-MIT. Probo itself is distributed under its own MIT license.
+The Railway wrapper is MIT. The Comp AI-informed starter kit is distributed separately under the [GNU Affero General Public License v3.0](starter-kits/probo-iso27001/LICENSE); see its [provenance notes](starter-kits/probo-iso27001/PROVENANCE.md). Probo itself is distributed under its own MIT license.

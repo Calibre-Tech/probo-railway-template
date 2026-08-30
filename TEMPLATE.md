@@ -13,6 +13,7 @@ Published template: <https://railway.com/deploy/probo-fixed-and-pinned>
 - Public networking target port: `8080`
 - Healthcheck path: `/`
 - Volume mount: `/data`
+- First boot seeds the ISO/IEC 27001 starter kit at `/data/starter-kits/probo-iso27001`; later boots preserve operator edits.
 - Restart policy: on failure, 10 retries
 
 Variables:
