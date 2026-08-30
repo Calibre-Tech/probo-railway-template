@@ -24,6 +24,7 @@ starter_kit_path="$test_dir/data/starter-kits/probo-iso27001"
 
 mkdir -p "$starter_kit_source"
 printf '%s\n' '# Starter kit' >"$starter_kit_source/README.md"
+printf '%s\n' '# Onboarding' >"$starter_kit_source/00-codex-mcp-onboarding.md"
 printf '%s\n' '# Import map' >"$starter_kit_source/11-probo-mcp-import-map.md"
 
 PROBOD_OAUTH2_SERVER_SIGNING_KEY_PATH="$key_path" \
@@ -42,6 +43,7 @@ openssl rsa -in "$capture_path" -check -noout >/dev/null 2>&1
 [ "$(cat "$args_path")" = "alpha beta" ]
 [ "$(stat -c '%a' "$key_path" 2>/dev/null || stat -f '%Lp' "$key_path")" = "600" ]
 cmp "$starter_kit_source/README.md" "$starter_kit_path/README.md"
+cmp "$starter_kit_source/00-codex-mcp-onboarding.md" "$starter_kit_path/00-codex-mcp-onboarding.md"
 cmp "$starter_kit_source/11-probo-mcp-import-map.md" "$starter_kit_path/11-probo-mcp-import-map.md"
 [ "$(cat "$openai_capture_path")" = "mcp-only-not-a-real-openai-key" ]
 

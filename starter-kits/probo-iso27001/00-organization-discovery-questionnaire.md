@@ -64,9 +64,11 @@ Record applicable legal, regulatory and contractual obligations separately. A su
 - Treatment options, owners, due dates and residual-risk approval.
 - Periodic and event-driven reassessment triggers.
 
-## 9. Existing evidence
+## 9. Existing documents, evidence and source access
 
 List approved policies, training records, access reviews, device exports, secure-change samples, vulnerability results, supplier reviews, backup results, restore tests, incident/tabletop records, monitoring results, internal audits, management reviews and corrective actions. Distinguish actual results from blank templates.
+
+For each item, record its owner, approval/status, version or date range, and exact location such as a Google Drive folder, GitHub repository/path, other connected workspace, local file, or named web application. Record whether an appropriate Codex connector is authorized, Chrome access is permitted, or access remains unavailable. Do not record credentials or tokens.
 
 ## 10. Initial decisions required
 

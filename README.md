@@ -25,10 +25,11 @@ The Railway template creates Probo, PostgreSQL, Bucket, and headless Chrome serv
 After deployment:
 
 1. Open the generated Probo domain and create the first account.
-2. Configure SMTP before relying on invitations, password resets, or notifications.
-3. Back up PostgreSQL and Bucket data as one recovery point. The `/data` volume contains generated runtime material, including the OAuth2 signing key, but it is not a substitute for database and object-storage backups.
-4. To connect an MCP client, use `https://<public-domain>/api/mcp/v1` and allowlist its exact HTTPS client metadata URL.
-5. Add `PROBOD_OPENAI_API_KEY` only if you want Probo's built-in AI features; it is not needed for Codex-driven MCP workflows.
+2. Connect Codex to `https://<public-domain>/api/mcp/v1` and allowlist its exact HTTPS client metadata URL.
+3. Run the [Codex and Probo MCP onboarding interview](starter-kits/probo-iso27001/00-codex-mcp-onboarding.md). It asks about company context, existing compliance material and its location, appropriate Google Drive/GitHub/other connectors, and scoped Chrome access before proposing the company-context write.
+4. Configure SMTP before relying on invitations, password resets, or notifications.
+5. Back up PostgreSQL and Bucket data as one recovery point. The `/data` volume contains generated runtime material, including the OAuth2 signing key, but it is not a substitute for database and object-storage backups.
+6. Add `PROBOD_OPENAI_API_KEY` only if you want Probo's built-in AI features; it is not needed for Codex-driven MCP workflows.
 
 See [TEMPLATE.md](TEMPLATE.md) for the complete Railway composer configuration.
 
@@ -36,7 +37,7 @@ See [TEMPLATE.md](TEMPLATE.md) for the complete Railway composer configuration.
 
 The deployment includes the complete [Probo ISO/IEC 27001 starter kit](starter-kits/probo-iso27001/README.md). On first start, the wrapper copies it to `/data/starter-kits/probo-iso27001` and never overwrites that editable copy on later restarts or upgrades.
 
-Start with the organization discovery questionnaire, review every placeholder against verified facts, then follow the [Probo MCP import map](starter-kits/probo-iso27001/11-probo-mcp-import-map.md). The template does not auto-import records: the map requires a read-only inventory, a proposed manifest, and explicit approval before tenant writes. Draft templates are not evidence of control operation or conformity.
+Start with the guided [Codex/MCP onboarding interview](starter-kits/probo-iso27001/00-codex-mcp-onboarding.md), then complete the organization discovery questionnaire and follow the [Probo MCP import map](starter-kits/probo-iso27001/11-probo-mcp-import-map.md). The interview inventories existing documents and evidence, asks for the relevant Codex connectors or scoped Chrome access, and prepares a sourced company-context draft for approval. The template does not auto-import records: the map requires a read-only inventory, a proposed manifest, and explicit approval before tenant writes. Draft templates are not evidence of control operation or conformity.
 
 ## Updating Probo
 

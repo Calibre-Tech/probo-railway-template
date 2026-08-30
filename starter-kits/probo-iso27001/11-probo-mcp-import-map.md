@@ -4,16 +4,19 @@ This is an operator guide, not an executable script. Confirm the connected Probo
 
 ## 1. Safe workflow
 
-1. List organizations and select the intended tenant.
-2. Read the organization context and existing frameworks, controls, profiles, documents, measures, risks, suppliers, obligations, tasks, SoA and audits.
-3. Paginate every list and deduplicate by entity ID.
-4. Compare by stable meaning and title before creating anything.
-5. Prepare a proposed import manifest showing creates, updates, links, owners and rollback.
-6. Obtain approval for the proposed writes.
-7. Create drafts and planning entities only; do not publish, accept risk, close findings or raise control maturity.
-8. Link documents, measures, risks and obligations to relevant controls.
-9. Verify the returned IDs and re-list every affected collection.
-10. Publish or request approval only after management reviews the exact draft.
+1. Run [the Codex and Probo MCP onboarding interview](00-codex-mcp-onboarding.md), including existing-material, connector, Chrome-access, and company-context discovery.
+2. List organizations and select the intended tenant.
+3. Read the organization context and existing frameworks, controls, profiles, documents, measures, risks, suppliers, obligations, tasks, SoA and audits.
+4. Paginate every list and deduplicate by entity ID.
+5. Inspect only user-approved connected sources, retaining source links and separating evidence from templates.
+6. Show the normalized company-context draft and obtain approval before updating the selected organization; re-read it after the write.
+7. Compare remaining records by stable meaning and title before creating anything.
+8. Prepare a proposed import manifest showing creates, updates, links, owners and rollback.
+9. Obtain approval for the proposed writes.
+10. Create drafts and planning entities only; do not publish, accept risk, close findings or raise control maturity.
+11. Link documents, measures, risks and obligations to relevant controls.
+12. Verify the returned IDs and re-list every affected collection.
+13. Publish or request approval only after management reviews the exact draft.
 
 ## 2. Document import map
 
@@ -94,7 +97,11 @@ Verify every relationship with the corresponding list operation. Do not infer li
 ```text
 Use the connected Probo MCP to prepare an ISO/IEC 27001 implementation from the Markdown starter kit.
 
-First work read-only: confirm the organization, paginate and ID-deduplicate every relevant Probo inventory, compare existing content, and produce a proposed import manifest. Do not create, update, publish, approve, sign, accept risk, change control maturity, complete tasks, close findings, launch campaigns, invite people or alter provider settings without my explicit approval.
+Begin with `00-codex-mcp-onboarding.md`: interview me about company context, existing compliance documents and evidence, where they are stored, and which Codex connectors or specific Chrome access I can authorize. Never ask for passwords, tokens, API keys or session data.
+
+First work read-only: confirm the organization, paginate and ID-deduplicate every relevant Probo inventory, inspect only approved sources, compare existing content, and distinguish operating evidence from templates. Show me a sourced company-context draft and proposed import manifest. Do not create, update, publish, approve, sign, accept risk, change control maturity, complete tasks, close findings, launch campaigns, invite people or alter provider settings without my explicit approval.
+
+After I approve the exact company-context draft, update only that context using the current MCP schema, re-read it, and report the verification result. Treat all remaining writes as a separate approval step.
 
 When approved, create only truthful draft/planning entities. Map each framework control to an approved-intent document, an operating measure, assigned tasks, objective evidence, and findings/corrective actions where results fail. Re-list and verify every affected entity and provide IDs plus rollback dependencies. Never treat a template, target, provider claim or selected risk treatment as operating evidence.
 ```

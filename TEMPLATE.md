@@ -85,6 +85,8 @@ The MCP endpoint is `https://<public-domain>/api/mcp/v1`.
 
 For CIMD clients such as Codex, add each exact HTTPS client metadata document URL to `PROBOD_OAUTH2_SERVER_CIMD_ALLOWED_CLIENT_IDS`. Do not ship a global wildcard.
 
+After connecting Codex, start with `starter-kits/probo-iso27001/00-codex-mcp-onboarding.md`. The guided interview inventories company context and existing compliance material, requests the appropriate Codex connectors or scoped Chrome access, and requires review of the sourced company-context draft before it is written and re-read through the Probo MCP.
+
 ## Known upstream behavior
 
 Probo currently defaults its tracing exporter to `localhost:4318`. A missing collector may produce non-fatal OpenTelemetry export errors. This template does not add a paid fourth service only to discard traces.

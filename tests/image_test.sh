@@ -17,6 +17,7 @@ docker run --rm \
         test -w /data
         test "$PROBOD_OPENAI_API_KEY" = "mcp-only-not-a-real-openai-key"
         test -f /data/starter-kits/probo-iso27001/README.md
+        test -f /data/starter-kits/probo-iso27001/00-codex-mcp-onboarding.md
         test -f /data/starter-kits/probo-iso27001/11-probo-mcp-import-map.md
         openssl rsa -in /data/oauth2-server-signing-key.pem -check -noout >/dev/null 2>&1
         test "$(stat -c %a /data/oauth2-server-signing-key.pem)" = "600"

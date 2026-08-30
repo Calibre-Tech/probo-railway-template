@@ -15,19 +15,22 @@ This starter kit is distributed under the [GNU Affero General Public License v3.
 
 ## Recommended order
 
-1. Complete [the organization discovery questionnaire](00-organization-discovery-questionnaire.md).
-2. Draft the Clause 4 and 5 documents (`01` to `04`).
-3. Define the risk method, populate risks and prepare the SoA (`05`).
-4. Approve measurable objectives and monitoring (`06` and `07`).
-5. Configure the internal-audit and management-review cycle (`08` and `09`).
-6. Populate the operational evidence registers (`10`).
-7. Use [the Probo MCP import map](11-probo-mcp-import-map.md) to create and link Probo entities.
-8. Obtain approval, publish controlled versions, operate the controls and retain results.
+1. Run [the Codex and Probo MCP onboarding interview](00-codex-mcp-onboarding.md) to select the tenant, gather company context, inventory existing material, and arrange connector or Chrome access.
+2. Complete [the organization discovery questionnaire](00-organization-discovery-questionnaire.md).
+3. Approve and verify the company context in Probo before importing other records.
+4. Draft the Clause 4 and 5 documents (`01` to `04`).
+5. Define the risk method, populate risks and prepare the SoA (`05`).
+6. Approve measurable objectives and monitoring (`06` and `07`).
+7. Configure the internal-audit and management-review cycle (`08` and `09`).
+8. Populate the operational evidence registers (`10`).
+9. Use [the Probo MCP import map](11-probo-mcp-import-map.md) to create and link Probo entities.
+10. Obtain approval, publish controlled versions, operate the controls and retain results.
 
 ## Files
 
 | File | Primary ISO/IEC 27001 area | Intended Probo use |
 | --- | --- | --- |
+| [Codex and Probo MCP onboarding](00-codex-mcp-onboarding.md) | Implementation intake | Guided source, connector, Chrome, and company-context setup |
 | [Organization discovery questionnaire](00-organization-discovery-questionnaire.md) | Clauses 4–10 and Annex A | Source questionnaire; keep local until reviewed |
 | [Context of organization](01-context-of-organization.md) | 4.1 | `GOVERNANCE` document |
 | [Interested parties and requirements](02-interested-parties-and-requirements.md) | 4.2 | `REGISTER` document plus Probo obligations |
