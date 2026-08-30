@@ -1,0 +1,20 @@
+name: test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  entrypoint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test OAuth key bootstrap
+        run: ./tests/entrypoint_test.sh
+      - name: Build image
+        run: docker build --build-arg PROBO_VERSION=v0.271.0 .
