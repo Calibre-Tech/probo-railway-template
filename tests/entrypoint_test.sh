@@ -10,12 +10,14 @@ fake_entrypoint="$test_dir/fake-entrypoint.sh"
 cat >"$fake_entrypoint" <<'EOF'
 #!/bin/sh
 printf '%s' "$PROBOD_OAUTH2_SERVER_SIGNING_KEY" >"$CAPTURE_PATH"
+printf '%s' "$PROBOD_OPENAI_API_KEY" >"$OPENAI_CAPTURE_PATH"
 printf '%s\n' "$*" >"$ARGS_PATH"
 EOF
 chmod 0755 "$fake_entrypoint"
 
 key_path="$test_dir/oauth.pem"
 capture_path="$test_dir/captured.pem"
+openai_capture_path="$test_dir/openai-key.txt"
 args_path="$test_dir/args.txt"
 starter_kit_source="$test_dir/starter-kit-source"
 starter_kit_path="$test_dir/data/starter-kits/probo-iso27001"
@@ -29,6 +31,7 @@ PROBO_ORIGINAL_ENTRYPOINT="$fake_entrypoint" \
 PROBO_ISO27001_STARTER_KIT_SOURCE="$starter_kit_source" \
 PROBO_ISO27001_STARTER_KIT_PATH="$starter_kit_path" \
 CAPTURE_PATH="$capture_path" \
+OPENAI_CAPTURE_PATH="$openai_capture_path" \
 ARGS_PATH="$args_path" \
     "$repo_dir/railway-entrypoint.sh" alpha beta
 
@@ -40,6 +43,7 @@ openssl rsa -in "$capture_path" -check -noout >/dev/null 2>&1
 [ "$(stat -c '%a' "$key_path" 2>/dev/null || stat -f '%Lp' "$key_path")" = "600" ]
 cmp "$starter_kit_source/README.md" "$starter_kit_path/README.md"
 cmp "$starter_kit_source/11-probo-mcp-import-map.md" "$starter_kit_path/11-probo-mcp-import-map.md"
+[ "$(cat "$openai_capture_path")" = "mcp-only-not-a-real-openai-key" ]
 
 first_hash=$(openssl dgst -sha256 "$key_path")
 printf '%s\n' '# Operator customization' >"$starter_kit_path/README.md"
@@ -49,6 +53,7 @@ PROBO_ORIGINAL_ENTRYPOINT="$fake_entrypoint" \
 PROBO_ISO27001_STARTER_KIT_SOURCE="$starter_kit_source" \
 PROBO_ISO27001_STARTER_KIT_PATH="$starter_kit_path" \
 CAPTURE_PATH="$capture_path" \
+OPENAI_CAPTURE_PATH="$openai_capture_path" \
 ARGS_PATH="$args_path" \
     "$repo_dir/railway-entrypoint.sh"
 
@@ -58,15 +63,18 @@ ARGS_PATH="$args_path" \
 provided_key="provided-test-key"
 rm "$key_path"
 PROBOD_OAUTH2_SERVER_SIGNING_KEY="$provided_key" \
+PROBOD_OPENAI_API_KEY="real-operator-key" \
 PROBOD_OAUTH2_SERVER_SIGNING_KEY_PATH="$key_path" \
 PROBO_ORIGINAL_ENTRYPOINT="$fake_entrypoint" \
 PROBO_ISO27001_STARTER_KIT_SOURCE="$starter_kit_source" \
 PROBO_ISO27001_STARTER_KIT_PATH="$starter_kit_path" \
 CAPTURE_PATH="$capture_path" \
+OPENAI_CAPTURE_PATH="$openai_capture_path" \
 ARGS_PATH="$args_path" \
     "$repo_dir/railway-entrypoint.sh"
 
 [ "$(cat "$capture_path")" = "$provided_key" ]
+[ "$(cat "$openai_capture_path")" = "real-operator-key" ]
 [ ! -e "$key_path" ]
 
 echo "entrypoint tests passed"

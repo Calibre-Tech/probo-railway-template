@@ -39,7 +39,6 @@ Variables:
 | `PROBOD_AWS_SECRET_ACCESS_KEY` | `${{Bucket.SECRET_ACCESS_KEY}}` |
 | `PROBOD_AWS_USE_PATH_STYLE` | `false` |
 | `PROBOD_CHROME_DP_ADDR` | `${{Chrome.RAILWAY_PRIVATE_DOMAIN}}:9222` |
-| `PROBOD_OPENAI_API_KEY` | Required user input; no default |
 | `PROBOD_OAUTH2_SERVER_CIMD_ALLOWED_CLIENT_IDS` | Optional comma-separated HTTPS client metadata URLs |
 
 Do not add `PROBOD_OAUTH2_SERVER_SIGNING_KEY`. The wrapper generates a 2048-bit RSA key on first boot and persists it on `/data`. An operator-supplied value still takes precedence.
@@ -73,6 +72,12 @@ New Railway buckets use virtual-hosted addressing, so `PROBOD_AWS_USE_PATH_STYLE
 - `PROBOD_MAILER_SENDER_EMAIL`
 
 Leave these unset unless the deployer supplies a real mail provider.
+
+## Optional AI variable
+
+- `PROBOD_OPENAI_API_KEY`
+
+Leave this unset for MCP-first operation through Codex. The wrapper injects a non-secret placeholder to satisfy Probo v0.271.0 startup wiring; built-in AI features remain unavailable until a real key is configured.
 
 ## MCP
 

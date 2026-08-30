@@ -20,7 +20,7 @@ The public community template currently points at a stale GHCR `latest` image an
 
 ## Deploying
 
-The Railway template should create Probo, PostgreSQL, Bucket, and headless Chrome services. It asks only for a real `PROBOD_OPENAI_API_KEY`; current Probo initializes its default agent during startup, so a fake automatic value would make the installation misleadingly partial.
+The Railway template creates Probo, PostgreSQL, Bucket, and headless Chrome services without asking for an OpenAI key. When no key is configured, the wrapper supplies a clearly non-secret placeholder solely because Probo v0.271.0 initializes its default agent during startup. The application and MCP remain available, while built-in AI features will fail until an operator adds a real provider key.
 
 After deployment:
 
@@ -28,6 +28,7 @@ After deployment:
 2. Configure SMTP before relying on invitations, password resets, or notifications.
 3. Back up PostgreSQL and Bucket data as one recovery point. The `/data` volume contains generated runtime material, including the OAuth2 signing key, but it is not a substitute for database and object-storage backups.
 4. To connect an MCP client, use `https://<public-domain>/api/mcp/v1` and allowlist its exact HTTPS client metadata URL.
+5. Add `PROBOD_OPENAI_API_KEY` only if you want Probo's built-in AI features; it is not needed for Codex-driven MCP workflows.
 
 See [TEMPLATE.md](TEMPLATE.md) for the complete Railway composer configuration.
 

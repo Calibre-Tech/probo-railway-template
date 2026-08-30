@@ -7,6 +7,12 @@ original_entrypoint="${PROBO_ORIGINAL_ENTRYPOINT:-/usr/local/bin/entrypoint.sh}"
 starter_kit_source="${PROBO_ISO27001_STARTER_KIT_SOURCE:-/opt/probo-starter-kits/probo-iso27001}"
 starter_kit_path="${PROBO_ISO27001_STARTER_KIT_PATH:-/data/starter-kits/probo-iso27001}"
 
+if [ -z "${PROBOD_OPENAI_API_KEY:-}" ] && [ "${PROBOD_AGENT_DEFAULT_PROVIDER:-openai}" = "openai" ]; then
+    PROBOD_OPENAI_API_KEY="mcp-only-not-a-real-openai-key"
+    export PROBOD_OPENAI_API_KEY
+    echo "OpenAI is not configured; starting in MCP-first mode. Built-in AI features will remain unavailable."
+fi
+
 if [ -d "$starter_kit_source" ] && [ ! -e "$starter_kit_path" ] && [ ! -L "$starter_kit_path" ]; then
     starter_kit_parent=$(dirname "$starter_kit_path")
     starter_kit_tmp="${starter_kit_path}.tmp.$$"
