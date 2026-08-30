@@ -2,7 +2,7 @@
 
 A Railway-ready wrapper and template specification for self-hosting [Probo](https://github.com/getprobo/probo).
 
-[Deploy Probo — Latest on Railway](https://railway.com/deploy/probo-fixed-and-pinned)
+[Deploy Probo — Latest on Railway](https://railway.com/deploy/probo-latest)
 
 The public community template currently points at a stale GHCR `latest` image and omits configuration that current Probo requires. This repository keeps the application on Probo's supported registry, pins a tested release, and generates the required OAuth2 RSA signing key safely on first boot.
 

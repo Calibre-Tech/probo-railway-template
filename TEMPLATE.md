@@ -2,7 +2,7 @@
 
 This is the source of truth for the Railway template composer.
 
-Published template: [Probo — Latest](https://railway.com/deploy/probo-fixed-and-pinned)
+Published template: [Probo — Latest](https://railway.com/deploy/probo-latest)
 
 ## Default region
 
