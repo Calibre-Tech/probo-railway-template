@@ -29,7 +29,7 @@ openssl rsa -in "$capture_path" -check -noout >/dev/null 2>&1
 [ "$(openssl rsa -in "$key_path" -pubout 2>/dev/null | openssl dgst -sha256)" = \
     "$(openssl rsa -in "$capture_path" -pubout 2>/dev/null | openssl dgst -sha256)" ]
 [ "$(cat "$args_path")" = "alpha beta" ]
-[ "$(stat -f '%Lp' "$key_path" 2>/dev/null || stat -c '%a' "$key_path")" = "600" ]
+[ "$(stat -c '%a' "$key_path" 2>/dev/null || stat -f '%Lp' "$key_path")" = "600" ]
 
 first_hash=$(openssl dgst -sha256 "$key_path")
 
