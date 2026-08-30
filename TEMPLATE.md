@@ -2,6 +2,8 @@
 
 This is the source of truth for the Railway template composer.
 
+Published template: <https://railway.com/deploy/probo-fixed-and-pinned>
+
 ## Services
 
 ### Probo
@@ -43,7 +45,7 @@ Do not add `PROBOD_OAUTH2_SERVER_SIGNING_KEY`. The wrapper generates a 2048-bit 
 
 ### Postgres
 
-- Source: Railway PostgreSQL 17 template (`ghcr.io/railwayapp-templates/postgres-ssl:17`)
+- Source: Railway PostgreSQL 18 template (`ghcr.io/railwayapp-templates/postgres-ssl:18`)
 - Volume mount: `/var/lib/postgresql/data`
 - Keep the database template's generated password and standard `PG*` variables.
 
