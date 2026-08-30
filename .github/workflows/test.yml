@@ -17,4 +17,4 @@ jobs:
       - name: Test OAuth key bootstrap
         run: ./tests/entrypoint_test.sh
       - name: Build image
-        run: docker build --build-arg PROBO_VERSION=v0.271.0 .
+        run: docker build .

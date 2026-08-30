@@ -1,5 +1,4 @@
-ARG PROBO_VERSION=v0.271.0
-FROM artifact.probo.inc/probo/probo:${PROBO_VERSION}
+FROM artifact.probo.inc/probo/probo:v0.271.0@sha256:2cc4016687e1b44410e2316821dc4c5e650981dc703ff157d9351b4d07887fc7
 
 USER root
 

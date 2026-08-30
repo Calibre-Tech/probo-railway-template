@@ -6,7 +6,7 @@ The public community template currently points at a stale GHCR `latest` image an
 
 ## What this fixes
 
-- Uses `artifact.probo.inc/probo/probo:v0.271.0`, not the stale `ghcr.io/getprobo/probo:latest` alias.
+- Uses the immutable digest for `artifact.probo.inc/probo/probo:v0.271.0`, not the stale `ghcr.io/getprobo/probo:latest` alias.
 - Uses full `https://` origins for `PROBOD_BASE_URL` and CORS.
 - Binds Probo to `0.0.0.0:8080` and targets Railway networking at port `8080`.
 - Uses current `PROBOD_*` variable names throughout.
@@ -30,7 +30,7 @@ See [TEMPLATE.md](TEMPLATE.md) for the complete Railway composer configuration.
 
 ## Updating Probo
 
-Probo only supports the latest release for security fixes. Update `PROBO_VERSION` in the Dockerfile, review the upstream `probod` changelog, run the tests, then deploy to a staging copy before updating the Railway template.
+Probo only supports the latest release for security fixes. Update the pinned tag and digest in the Dockerfile, review the upstream `probod` changelog, run the tests, then deploy to a staging copy before updating the Railway template.
 
 Do not replace the version with the old GHCR `latest` tag. Railway does not automatically refresh Docker-image templates when a mutable tag changes, and that alias has lagged the actual Probo releases.
 
