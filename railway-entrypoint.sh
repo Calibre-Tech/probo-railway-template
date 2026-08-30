@@ -2,6 +2,12 @@
 
 set -eu
 
+if [ "$(id -u)" -eq 0 ]; then
+    mkdir -p /data
+    chown probo:probo /data
+    exec setpriv --reuid=probo --regid=probo --init-groups "$0" "$@"
+fi
+
 key_path="${PROBOD_OAUTH2_SERVER_SIGNING_KEY_PATH:-/data/oauth2-server-signing-key.pem}"
 original_entrypoint="${PROBO_ORIGINAL_ENTRYPOINT:-/usr/local/bin/entrypoint.sh}"
 starter_kit_source="${PROBO_ISO27001_STARTER_KIT_SOURCE:-/opt/probo-starter-kits/probo-iso27001}"

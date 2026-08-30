@@ -17,4 +17,6 @@ jobs:
       - name: Test OAuth key bootstrap
         run: ./tests/entrypoint_test.sh
       - name: Build image
-        run: docker build .
+        run: docker build -t probo-railway-template:test .
+      - name: Test Railway volume initialization
+        run: ./tests/image_test.sh probo-railway-template:test

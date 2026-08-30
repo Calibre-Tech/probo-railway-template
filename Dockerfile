@@ -11,6 +11,4 @@ RUN apt-get update \
 COPY --chmod=0755 railway-entrypoint.sh /usr/local/bin/railway-entrypoint.sh
 COPY --chown=probo:probo starter-kits/probo-iso27001 /opt/probo-starter-kits/probo-iso27001
 
-USER probo
-
 ENTRYPOINT ["/usr/local/bin/railway-entrypoint.sh"]

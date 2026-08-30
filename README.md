@@ -48,10 +48,11 @@ Do not replace the version with the old GHCR `latest` tag. Railway does not auto
 
 ```sh
 ./tests/entrypoint_test.sh
-docker build .
+docker build -t probo-railway-template:test .
+./tests/image_test.sh probo-railway-template:test
 ```
 
-The test verifies that the starter kit is seeded once without overwriting operator edits, and that the OAuth key is valid, private (`0600`), persistent across restarts, and overridden by an operator-supplied key.
+The tests verify Railway's root-owned volume is handed to the non-root Probo user, the starter kit is seeded once without overwriting operator edits, and the OAuth key is valid, private (`0600`), persistent across restarts, and overridden by an operator-supplied key.
 
 ## Licenses
 
