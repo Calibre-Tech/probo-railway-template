@@ -42,3 +42,7 @@ docker build .
 ```
 
 The test verifies that the key is valid, private (`0600`), persistent across restarts, and overridden by an operator-supplied key.
+
+## License
+
+MIT. Probo itself is distributed under its own MIT license.
