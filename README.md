@@ -22,6 +22,12 @@ The public community template currently points at a stale GHCR `latest` image an
 
 The Railway template creates Probo, PostgreSQL, Bucket, and headless Chrome services without asking for an OpenAI key. When no key is configured, the wrapper supplies a clearly non-secret placeholder solely because Probo v0.271.0 initializes its default agent during startup. The application and MCP remain available, while built-in AI features will fail until an operator adds a real provider key.
 
+### EU-first deployment
+
+Railway templates inherit the deployer's preferred region; Railway's template composer cannot force a region for every user. Before deploying, set **Account Settings → Preferred Region** to **EU West Metal (Amsterdam, Netherlands)**. Do this before the project is created because the Railway Bucket region is immutable.
+
+After deployment, verify that Probo, PostgreSQL, and Chrome show EU West in their service settings and that the Bucket settings show EU West. The attached Probo and PostgreSQL volumes follow their services' region. Users can deliberately choose another Railway region by changing their preferred region before deployment.
+
 After deployment:
 
 1. Open the generated Probo domain and create the first account.

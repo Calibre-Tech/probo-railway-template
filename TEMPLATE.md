@@ -4,6 +4,12 @@ This is the source of truth for the Railway template composer.
 
 Published template: [Probo — Latest](https://railway.com/deploy/probo-fixed-and-pinned)
 
+## Default region
+
+Railway deploys templates to each user's preferred account region; the template composer does not expose a creator-defined region default. For an EU deployment, the user must select **EU West Metal (Amsterdam, Netherlands)** in **Account Settings → Preferred Region** before deploying the template.
+
+Verify the region on Probo, PostgreSQL, Chrome, and Bucket after deployment. Probo and PostgreSQL volumes follow their attached service. A Railway Bucket's region cannot be changed after creation, so a non-EU bucket must be replaced and its data migrated rather than moved in place.
+
 ## Services
 
 ### Probo
@@ -52,7 +58,7 @@ Do not add `PROBOD_OAUTH2_SERVER_SIGNING_KEY`. The wrapper generates a 2048-bit 
 ### Bucket
 
 - Source: Railway Bucket
-- Region: selected by the deployer
+- Region: inherited from the deployer's Railway preferred region; use EU West Metal for EU-first deployments
 
 New Railway buckets use virtual-hosted addressing, so `PROBOD_AWS_USE_PATH_STYLE` is `false`. Operators migrating an older bucket should use the addressing mode shown on that bucket's Credentials page.
 
